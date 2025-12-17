@@ -18,14 +18,17 @@ spec:
         image: chromadb/chroma:latest
         ports:
         - containerPort: 8000
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: chromadb
-  namespace: gangwon
-spec:
-  selector:
-    app: chromadb
-  ports:
-  - port: 8000
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"
+        volumeMounts:
+        - name: chroma-data
+          mountPath: /chroma
+      volumes:
+      - name: chroma-data
+        persistentVolumeClaim:
+          claimName: chromadb-pvc
