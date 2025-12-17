@@ -23,7 +23,7 @@ spec:
         - name: ghcr-pull
       containers:
       - name: backend
-        image: ghcr.io/inspire12/upstage-gangwon-backend:lite
+        image: ghcr.io/inspire12/upstage-gangwon-backend:0.1.1
         ports:
         - containerPort: 8880
         resources:
